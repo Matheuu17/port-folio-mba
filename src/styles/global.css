@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+    --font-arcade: "Press Start 2P", system-ui, sans-serif;
+  }

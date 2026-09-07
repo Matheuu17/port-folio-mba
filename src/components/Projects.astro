@@ -1,0 +1,63 @@
+---
+import CSS from "../icons/CSS.astro"
+import Django from "../icons/Django.astro"
+import HTML from "../icons/HTML.astro"
+import SQLite from "../icons/SQLite.astro"
+
+const TAGS = {
+    Django: {
+        name: "Django",
+        class: "bg-[#092e20] text-[#44b78b]",
+        icon: Django,
+    },
+    HTML: {
+        name: "HTML",
+        class: "bg-[#e34f26] text-white",
+        icon: HTML,
+    },
+    CSS: {
+        name: "CSS",
+        class: "bg-[#1572b6] text-white",
+        icon: CSS,
+    },
+    SQLite: {
+        name: "SQLite",
+        class: "bg-[#003b57] text-white",
+        icon: SQLite,
+    },
+}
+const PROJECTS = [
+    {
+        title:'AlToque - Gestion Web',
+        description: 'Aplicación web de gestión gastronómica y pedidos. Evolucionó de un prototipo en PHP nativo a una arquitectura modular y robusta con Django (Python) y SQLite.',
+        link:'#',
+        github: 'https://github.com/Matheuu17/AlToque',
+        image: '../projects/cocinapp.webp',
+        tags: [TAGS.Django, TAGS.HTML, TAGS.CSS, TAGS.SQLite ]
+    }
+]
+---
+{
+PROJECTS.map(({title, description, image, tags, github}) =>(
+    <article class="">
+        <img class="rounded shadow-2xl shadow-white/20" src={image} alt="captura del project uu" /> 
+        <h3 class="text-2xl font-semibold text-yellow-200 mb-2 mt-4">
+            {title}
+        </h3>
+        <p class="text-lg mb-4 text-pretty">
+            {description}
+        </p>
+        <ul class="flex gap-x-4 flew-row mb-4">
+            {tags.map(tag=>(
+                <li>
+                    <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
+                        <tag.icon class="size-4"/>
+                        {tag.name}
+                    </span>
+                </li>
+            ))}
+        </ul>
+        
+    </article>
+))
+}
