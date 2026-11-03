@@ -1,63 +1,83 @@
 ---
-import CSS from "../icons/CSS.astro"
-import Django from "../icons/Django.astro"
-import HTML from "../icons/HTML.astro"
-import SQLite from "../icons/SQLite.astro"
+import ProjectItem from "./ProjectsItem.astro";
+import Django from "../icons/Django.astro";
+import HTML from "../icons/HTML.astro";
+import CSS from "../icons/CSS.astro";
+import SQLite from "../icons/SQLite.astro";
 
 const TAGS = {
-    Django: {
-        name: "Django",
-        class: "bg-[#092e20] text-[#44b78b]",
-        icon: Django,
-    },
-    HTML: {
-        name: "HTML",
-        class: "bg-[#e34f26] text-white",
-        icon: HTML,
-    },
-    CSS: {
-        name: "CSS",
-        class: "bg-[#1572b6] text-white",
-        icon: CSS,
-    },
-    SQLite: {
-        name: "SQLite",
-        class: "bg-[#003b57] text-white",
-        icon: SQLite,
-    },
-}
+  Django: { name: "Django", class: "bg-[#092e20] text-[#44b78b]", icon: Django },
+  HTML: { name: "HTML", class: "bg-[#e34f26] text-white", icon: HTML },
+  CSS: { name: "CSS", class: "bg-[#1572b6] text-white", icon: CSS },
+  SQLite: { name: "SQLite", class: "bg-[#003b57] text-white", icon: SQLite },
+};
+
 const PROJECTS = [
-    {
-        title:'AlToque - Gestion Web',
-        description: 'Aplicación web de gestión gastronómica y pedidos. Evolucionó de un prototipo en PHP nativo a una arquitectura modular y robusta con Django (Python) y SQLite.',
-        link:'#',
-        github: 'https://github.com/Matheuu17/AlToque',
-        image: '../projects/cocinapp.webp',
-        tags: [TAGS.Django, TAGS.HTML, TAGS.CSS, TAGS.SQLite ]
-    }
-]
+  {
+    id: "altoque-project",
+    title: "AlToque — Gestión Web Gastronómica",
+    description: "Aplicación web de gestión gastronómica y pedidos. Evolucionó de un prototipo en PHP nativo a una arquitectura modular y robusta con Django (Python) y SQLite.",
+    highlights: [
+      "Arquitectura MVC con control transaccional de ventas y pedidos por mesa en tiempo real.",
+      "Optimización de consultas para métricas y soporte de operaciones diarias.",
+      "Autenticación y roles de usuario para personal de salón y cocina."
+    ],
+    github: "https://github.com/Matheuu17/TF-IS3/tree/main",
+    coverImage: "../projects/cocinapp.webp",
+    hasGallery: false,
+    gallery: [],
+    tags: [TAGS.Django, TAGS.HTML, TAGS.CSS, TAGS.SQLite],
+  },
+  {
+    id: "almi-project",
+    title: "ALMI — CRM & Kanban Operativo",
+    description: "Sistema integral de gestión de relaciones con contactos (CRM) y tablero Kanban de actividades diseñado para centralizar empresas, miembros y trazabilidad operativa.",
+    highlights: [
+      "Tablero Kanban interactivo desarrollado con JavaScript para seguimiento visual de estados en tiempo real.",
+      "Arquitectura Django/Python con modelado relacional y persistencia de auditoría.",
+      "Gestión granular de permisos, sesiones seguras y control de accesos corporativos."
+    ],
+    github: "https://github.com/Matheuu17/ALMI",
+    coverImage: "../projects/ALMI.webp",
+    hasGallery: true,
+    gallery: [
+      { src: "../projects/ALMI1.webp", title: "Tablero Kanban de Actividades" },
+      { src: "../projects/ALMI2.webp", title: "Panel de Gestión de Usuarios y Roles" },
+      { src: "../projects/ALMI3.webp", title: "Directorio de Empresas y Contactos" },
+      { src: "../projects/ALMI4.webp", title: "Historial y Trazabilidad de Reuniones" },
+    ],
+    tags: [TAGS.CSS, TAGS.Django, TAGS.HTML, TAGS.SQLite],
+  },
+];
 ---
-{
-PROJECTS.map(({title, description, image, tags, github}) =>(
-    <article class="">
-        <img class="rounded shadow-2xl shadow-white/20" src={image} alt="captura del project uu" /> 
-        <h3 class="text-2xl font-semibold text-yellow-200 mb-2 mt-4">
-            {title}
-        </h3>
-        <p class="text-lg mb-4 text-pretty">
-            {description}
-        </p>
-        <ul class="flex gap-x-4 flew-row mb-4">
-            {tags.map(tag=>(
-                <li>
-                    <span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}>
-                        <tag.icon class="size-4"/>
-                        {tag.name}
-                    </span>
-                </li>
-            ))}
-        </ul>
-        
-    </article>
-))
-}
+
+<div class="flex flex-col gap-y-12">
+  {PROJECTS.map((project) => (
+    <ProjectItem {...project} />
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-open-modal');
+      if (modalId) {
+        const modal = document.getElementById(modalId) as HTMLDialogElement;
+        if (modal) modal.showModal();
+      }
+    });
+  });
+
+  document.querySelectorAll('dialog .close-modal').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      const modal = (e.target as HTMLElement).closest('dialog');
+      if (modal) modal.close();
+    });
+  });
+
+  document.querySelectorAll('dialog').forEach((dialog) => {
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+</script>

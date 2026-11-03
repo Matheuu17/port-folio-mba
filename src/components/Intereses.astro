@@ -1,0 +1,34 @@
+---
+import InteresesItem from "./InteresesItem.astro";
+import ProgrammingIcon from "../icons/Programming.astro";
+import AIIcon from "../icons/AI.astro";
+import JuegosIcon from "../icons/Juegos.astro";
+import MusicaIcon from "../icons/Musica.astro";
+import AprendizajeIcon from "../icons/Aprendizaje.astro";
+
+const INTERESTS = [
+  { name: "Programación", icon: ProgrammingIcon },
+  { name: "AI", icon: AIIcon },
+  { name: "Juegos", icon: JuegosIcon },
+  { name: "Música", icon: MusicaIcon },
+  { name: "Aprendizaje", icon: AprendizajeIcon },
+];
+---
+
+<section id="interested-in" class="py-5 w-full">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+    {INTERESTS.map((interest) => (
+      <InteresesItem {...interest} />   
+    ))}
+  </div>
+
+  <div class="mt-5 w-full">
+    <div class="mx-auto max-w-2xl px-6 py-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#e12a88]/40 transition-colors">
+      <p class="text-[11px] md:text-xs leading-relaxed text-center text-white">
+        <strong class="text-white">Danza Folclórica & Arte:</strong> 
+        Miembro activo del <span class="text-[#e12a88] font-bold">Elenco de Danzas USIL </span>
+        — disciplina, coordinación y sincronía en equipo fuera de la terminal.
+      </p>
+    </div>
+  </div>
+</section>
