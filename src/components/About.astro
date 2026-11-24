@@ -1,0 +1,75 @@
+---
+import Section from "./Section.astro";
+import CornerBracket from "./CornerBracket.astro";
+
+const PROFILE_CARDS = [
+  {
+    label: "ESTUDIANDO",
+    value: "Ing. de Software, 8.º ciclo, USIL",
+  },
+  {
+    label: "UBICACIÓN",
+    value: "Lima, Perú",
+  },
+  {
+    label: "ENFOQUE",
+    value: "FullStack, Datos & Automatización",
+  },
+  {
+    label: "ROL ACTUAL",
+    value: "Freelancer",
+  },
+];
+---
+
+<Section
+  id="sobre-mi"
+  theme="light"
+  class="py-24 sm:py-32 relative overflow-hidden"
+>
+  <!-- Cabecera superior dividida -->
+  <div class="flex flex-wrap justify-between items-end gap-4 mb-14">
+    <h2 class="font-display text-6xl sm:text-7xl lg:text-[5.5rem] font-bold uppercase tracking-tight leading-[0.9] text-[#0B1120]">
+      SOBRE MÍ
+    </h2>
+
+    <div class="text-right font-mono text-xs uppercase tracking-widest space-y-1">
+      <span class="block text-[#0E7490] font-semibold">QUIÉN SOY</span>
+      <span class="block text-[#475569]">LIMA, PERÚ</span>
+    </div>
+  </div>
+
+  <!-- Grid principal de 2 columnas -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <!-- Columna Izquierda: Narrativa Personal -->
+    <div class="lg:col-span-6">
+      <p class="font-sans text-lg sm:text-xl leading-relaxed text-[#0B1120] font-normal text-pretty">
+        Soy estudiante de 8.º ciclo de Ingeniería de Software en la Universidad
+        San Ignacio de Loyola (USIL), perteneciente al Quinto Superior. Me
+        apasiona la innovación, la automatización y los datos se convierten en
+        software útil.
+      </p>
+
+      <p class="font-sans text-lg sm:text-xl leading-relaxed text-[#475569] mt-6 text-pretty">
+        "Si puedes imaginarlo, puedes programarlo" - Alejandro Miguel Taboada
+      </p>
+    </div>
+
+    <!-- Columna Derecha: Cuadrícula 2x2 con CornerBracket -->
+    <dl class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {PROFILE_CARDS.map((card) => (
+        <CornerBracket
+          variant="light"
+          class="bg-transparent p-5 transition-all duration-200"
+        >
+          <dt class="font-mono text-[11px] uppercase tracking-widest text-[#0E7490] font-semibold">
+            {card.label}
+          </dt>
+          <dd class="font-sans text-base font-medium text-[#0B1120] mt-2 leading-snug">
+            {card.value}
+          </dd>
+        </CornerBracket>
+      ))}
+    </dl>
+  </div>
+</Section>

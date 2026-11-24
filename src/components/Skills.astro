@@ -1,0 +1,295 @@
+---
+import CornerBracket from "./CornerBracket.astro";
+import DjangoIcon from "../icons/Django.astro";
+import SQLiteIcon from "../icons/SQLite.astro";
+import HTMLIcon from "../icons/HTML.astro";
+import CSSIcon from "../icons/CSS.astro";
+import TailwindIcon from "../icons/Tailwind.astro";
+import GitHubIcon from "../icons/GitHub.astro";
+import AIIcon from "../icons/AI.astro";
+
+interface SkillChip {
+  name: string;
+  iconKey:
+    | "python"
+    | "django"
+    | "sqlite"
+    | "supabase"
+    | "salesforce"
+    | "astro"
+    | "tailwind"
+    | "js"
+    | "html"
+    | "css"
+    | "responsive"
+    | "github"
+    | "ai"
+    | "cloud"
+    | "terminal"
+    | "kanban"
+    | "architecture";
+}
+
+interface SkillColumn {
+  code: string;
+  title: string;
+  description: string;
+  skills: SkillChip[];
+}
+
+const SKILL_COLUMNS: SkillColumn[] = [
+  {
+    code: "01 // CORE",
+    title: "Backend & Data",
+    description:
+      "Arquitectura modular, APIs, modelado relacional y análisis de datos.",
+    skills: [
+      { name: "Python", iconKey: "python" },
+      { name: "Django", iconKey: "django" },
+      { name: "SQLite", iconKey: "sqlite" },
+      { name: "Supabase", iconKey: "supabase" },
+      { name: "Salesforce Data", iconKey: "salesforce" },
+    ],
+  },
+  {
+    code: "02 // INTERFAZ",
+    title: "Frontend & Full-Stack",
+    description:
+      "Interfaces limpias, accesibles y responsivas centradas en rendimiento.",
+    skills: [
+      { name: "Astro", iconKey: "astro" },
+      { name: "Tailwind CSS", iconKey: "tailwind" },
+      { name: "JavaScript", iconKey: "js" },
+      { name: "HTML5", iconKey: "html" },
+      { name: "CSS3", iconKey: "css" },
+      { name: "UX/UI", iconKey: "responsive" },
+    ],
+  },
+  {
+    code: "03 // ECOSISTEMA",
+    title: "Cloud, AI & Tools",
+    description:
+      "Control de versiones, despliegue moderno y flujos potenciados con IA.",
+    skills: [
+      { name: "Git & GitHub", iconKey: "github" },
+      { name: "AI Workflows", iconKey: "ai" },
+      { name: "Vercel / Deploy", iconKey: "cloud" },
+      { name: "Arquitectura", iconKey: "architecture" },
+    ],
+  },
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {SKILL_COLUMNS.map((col) => (
+    <CornerBracket class="bg-[#111114] border border-[#27272A]/80 p-6 sm:p-7 flex flex-col justify-between transition-all duration-200 hover:bg-[#141419]">
+      <div>
+        <h3 class="font-display text-2xl sm:text-[26px] font-bold uppercase tracking-tight text-[#F8FAFC] leading-tight">
+          {col.title}
+        </h3>
+
+        <p class="mt-2.5 text-sm text-[#94A3B8] leading-relaxed">
+          {col.description}
+        </p>
+
+        <div class="mt-6 pt-5 border-t border-[#27272A] flex flex-wrap gap-2">
+          {col.skills.map((skill) => (
+            <span class="inline-flex items-center gap-2 px-2.5 py-1.5 rounded-sm bg-zinc-950/80 border border-[#27272A] text-xs font-mono text-zinc-200 transition-colors duration-200 hover:border-[#FACC15]/50 hover:text-[#F8FAFC]">
+              {skill.iconKey === "django" && (
+                <DjangoIcon class="size-3.5 shrink-0" />
+              )}
+              {skill.iconKey === "sqlite" && (
+                <SQLiteIcon class="size-3.5 shrink-0" />
+              )}
+              {skill.iconKey === "html" && (
+                <HTMLIcon class="size-3.5 shrink-0" />
+              )}
+              {skill.iconKey === "css" && <CSSIcon class="size-3.5 shrink-0" />}
+              {skill.iconKey === "tailwind" && (
+                <TailwindIcon class="size-3.5 shrink-0" />
+              )}
+              {skill.iconKey === "github" && (
+                <GitHubIcon class="size-3.5 shrink-0 text-zinc-200" />
+              )}
+              {skill.iconKey === "ai" && (
+                <AIIcon class="size-3.5 shrink-0 text-[#FACC15]" />
+              )}
+
+              {skill.iconKey === "python" && (
+                <svg
+                  class="size-3.5 shrink-0 text-[#FACC15]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3c-2.5 0-4 1-4 3v2h5v1H7c-2 0-3 1.5-3 4s1 4 3 4h2v-2.5c0-1.5 1-2.5 2.5-2.5h4c1.5 0 2.5-1 2.5-2.5V6c0-2-1.5-3-4-3z" />
+                  <path d="M12 21c2.5 0 4-1 4-3v-2h-5v-1h6c2 0 3-1.5 3-4s-1-4-3-4h-2v2.5c0 1.5-1 2.5-2.5 2.5h-4C7 12 6 13 6 14.5V18c0 2 1.5 3 4 3z" />
+                </svg>
+              )}
+
+              {skill.iconKey === "supabase" && (
+                <svg
+                  class="size-3.5 shrink-0"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M13.35 21.38c-.55.69-1.66.31-1.67-.58l-.19-12.9h8.62c1.56 0 2.43 1.8 1.46 3.02l-8.22 10.46Z"
+                    fill="#3ECF8E"
+                  />
+                  <path
+                    d="M10.65 2.62c.55-.69 1.66-.31 1.67.58l.19 12.9H3.89c-1.56 0-2.43-1.8-1.46-3.02L10.65 2.62Z"
+                    fill="#3ECF8E"
+                    fill-opacity="0.7"
+                  />
+                </svg>
+              )}
+
+              {skill.iconKey === "salesforce" && (
+                <svg
+                  class="size-3.5 shrink-0 text-cyan-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3v18h18" />
+                  <path d="M7 15v-4" />
+                  <path d="M12 15V8" />
+                  <path d="M17 15v-6" />
+                </svg>
+              )}
+
+              {skill.iconKey === "astro" && (
+                <svg
+                  class="size-3.5 shrink-0 text-orange-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 2 6 19l6-3 6 3-6-17Z" />
+                  <path d="M9.5 14h5" />
+                </svg>
+              )}
+
+              {skill.iconKey === "js" && (
+                <svg
+                  class="size-3.5 shrink-0 text-[#FACC15]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M10 10v5a2 2 0 0 1-2 2" />
+                  <path d="M14 15.5c.5.7 1.2 1 2 1 1.2 0 2-.6 2-1.5 0-1-.8-1.4-2-1.7-1.1-.3-1.8-.8-1.8-1.6 0-.9.8-1.5 1.8-1.5.8 0 1.4.3 1.8.8" />
+                </svg>
+              )}
+
+              {skill.iconKey === "responsive" && (
+                <svg
+                  class="size-3.5 shrink-0 text-zinc-300"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="2" y="4" width="14" height="10" rx="1.5" />
+                  <rect x="16" y="10" width="6" height="10" rx="1" />
+                  <path d="M6 18h6" />
+                </svg>
+              )}
+
+              {skill.iconKey === "cloud" && (
+                <svg
+                  class="size-3.5 shrink-0 text-zinc-200"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                </svg>
+              )}
+
+              {skill.iconKey === "terminal" && (
+                <svg
+                  class="size-3.5 shrink-0 text-emerald-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="4 17 10 11 4 5" />
+                  <line x1="12" y1="19" x2="20" y2="19" />
+                </svg>
+              )}
+
+              {skill.iconKey === "kanban" && (
+                <svg
+                  class="size-3.5 shrink-0 text-sky-400"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="3" y="4" width="5" height="14" rx="1" />
+                  <rect x="10" y="4" width="5" height="9" rx="1" />
+                  <rect x="17" y="4" width="4" height="12" rx="1" />
+                </svg>
+              )}
+
+              {skill.iconKey === "architecture" && (
+                <svg
+                  class="size-3.5 shrink-0 text-[#FACC15]"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect x="9" y="3" width="6" height="4" rx="1" />
+                  <rect x="3" y="17" width="6" height="4" rx="1" />
+                  <rect x="15" y="17" width="6" height="4" rx="1" />
+                  <path d="M12 7v5" />
+                  <path d="M6 17v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3" />
+                </svg>
+              )}
+
+              <span>{skill.name}</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </CornerBracket>
+  ))}
+</div>

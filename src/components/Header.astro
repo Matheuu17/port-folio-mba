@@ -1,18 +1,70 @@
-<header class="flex justify-center items-center py-5 w-full xl:w-[1120px] mx-auto text-xs mt-3">
-    <nav class="flex flex-row gap-x-10 ">
-        <a href="#Experiencia" class="inline-block hover:text-cyan-500 hover:scale-110 transition-all duration-200">
-            Experiencia
-        </a>
+---
+const NAV_ITEMS = [
+  { label: "Inicio", href: "#inicio", id: "inicio" },
+  { label: "Sobre mí", href: "#sobre-mi", id: "sobre-mi" },
+  //{ label: "Experiencia", href: "#Experiencia", id: "Experiencia" },
+  { label: "Skills", href: "#Skills", id: "Skills" },
+  { label: "Proyectos", href: "#Proyectos", id: "Proyectos" },
+  //{ label: "Intereses", href: "#Intereses", id: "Intereses" },
+  { label: "Contacto", href: "#Contacto", id: "Contacto" },
+];
+---
 
-        <a href="#Proyectos" class="inline-block hover:text-cyan-500 hover:scale-110 transition-all duration-200">
-            Proyectos
-        </a>
-
-        <a href="#Intereses" class="inline-block hover:text-cyan-500 hover:scale-110 transition-all duration-200">
-            Intereses
-        </a>
-        <a href="#Contacto" class="inline-block hover:text-cyan-500 hover:scale-110 transition-all duration-200">
-            Contacto
-        </a>
-    </nav>
+<header class="fixed top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-4 pointer-events-none">
+  <nav
+    aria-label="Navegación principal"
+    class="pointer-events-auto max-w-full flex items-center gap-0.5 sm:gap-1 px-2 py-1.5 sm:px-2.5 sm:py-1.5 rounded-full backdrop-blur-md bg-zinc-900/75 border border-zinc-800/90 shadow-lg shadow-black/40 overflow-x-auto"
+  >
+    {NAV_ITEMS.map((item) => (
+      <a
+        href={item.href}
+        data-nav-link={item.id}
+        class="nav-pill-link px-2 py-1 sm:px-3 sm:py-1.5 rounded-full font-mono text-[10px] sm:text-xs uppercase tracking-wider text-zinc-300 hover:text-[#FACC15] hover:bg-white/5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FACC15] active:scale-95 whitespace-nowrap shrink-0"
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
 </header>
+
+<script>
+  const navLinks = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]"),
+  );
+  const sections = navLinks
+    .map((link) => {
+      const id = link.getAttribute("data-nav-link");
+      return id ? document.getElementById(id) : null;
+    })
+    .filter((el): el is HTMLElement => el !== null);
+
+  function setActive(activeId: string) {
+    navLinks.forEach((link) => {
+      const isMatch = link.getAttribute("data-nav-link") === activeId;
+      link.classList.toggle("text-[#FACC15]", isMatch);
+      link.classList.toggle("bg-white/10", isMatch);
+      link.classList.toggle("text-zinc-300", !isMatch);
+      if (isMatch) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if (sections.length > 0 && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]?.target.id) {
+          setActive(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-25% 0px -55% 0px", threshold: [0.1, 0.25, 0.5] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

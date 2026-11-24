@@ -1,34 +1,46 @@
 ---
-import InteresesItem from "./InteresesItem.astro";
-import ProgrammingIcon from "../icons/Programming.astro";
-import AIIcon from "../icons/AI.astro";
-import JuegosIcon from "../icons/Juegos.astro";
-import MusicaIcon from "../icons/Musica.astro";
-import AprendizajeIcon from "../icons/Aprendizaje.astro";
+import CornerBracket from './CornerBracket.astro';
+import InteresesItem from './InteresesItem.astro';
+import ProgrammingIcon from '../icons/Programming.astro';
+import AIIcon from '../icons/AI.astro';
+import JuegosIcon from '../icons/Juegos.astro';
+import MusicaIcon from '../icons/Musica.astro';
+import AprendizajeIcon from '../icons/Aprendizaje.astro';
 
 const INTERESTS = [
-  { name: "Programación", icon: ProgrammingIcon },
-  { name: "AI", icon: AIIcon },
-  { name: "Juegos", icon: JuegosIcon },
-  { name: "Música", icon: MusicaIcon },
-  { name: "Aprendizaje", icon: AprendizajeIcon },
+  { name: 'Programación', code: '01', icon: ProgrammingIcon },
+  { name: 'AI', code: '02', icon: AIIcon },
+  { name: 'Juegos', code: '03', icon: JuegosIcon },
+  { name: 'Música', code: '04', icon: MusicaIcon },
+  { name: 'Aprendizaje', code: '05', icon: AprendizajeIcon },
 ];
 ---
 
-<section id="interested-in" class="py-5 w-full">
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+<div class="space-y-6">
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
     {INTERESTS.map((interest) => (
-      <InteresesItem {...interest} />   
+      <InteresesItem {...interest} />
     ))}
   </div>
 
-  <div class="mt-5 w-full">
-    <div class="mx-auto max-w-2xl px-6 py-4 rounded-xl border border-white/10 bg-white/[0.02] hover:border-[#e12a88]/40 transition-colors">
-      <p class="text-[11px] md:text-xs leading-relaxed text-center text-white">
-        <strong class="text-white">Danza Folclórica & Arte:</strong> 
-        Miembro activo del <span class="text-[#e12a88] font-bold">Elenco de Danzas USIL </span>
-        — disciplina, coordinación y sincronía en equipo fuera de la terminal.
+  <CornerBracket class="bg-[#111114] border border-[#27272A]/80 p-6 sm:p-7 transition-all duration-200 hover:bg-[#141419]">
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+      <div class="flex items-center gap-3 shrink-0">
+        <span class="w-1 h-10 bg-[#FACC15] hidden sm:block" aria-hidden="true"></span>
+        <div>
+          <span class="block font-mono text-[10px] uppercase tracking-widest text-[#FACC15]">
+            BEYOND CODE // CULTURA
+          </span>
+          <span class="font-display text-lg uppercase tracking-tight text-[#F8FAFC] font-bold">
+            Elenco de Danzas USIL
+          </span>
+        </div>
+      </div>
+
+      <p class="text-sm sm:text-base leading-relaxed text-[#94A3B8] sm:border-l sm:border-[#27272A] sm:pl-6 text-pretty">
+        <strong class="text-[#F8FAFC] font-semibold">Danza Folclórica & Arte:</strong>{" "}Miembro activo del{" "}
+        <span class="text-[#FACC15] font-semibold">Elenco de Danzas USIL</span> — disciplina, coordinación y sincronía en equipo fuera de la terminal.
       </p>
     </div>
-  </div>
-</section>
+  </CornerBracket>
+</div>

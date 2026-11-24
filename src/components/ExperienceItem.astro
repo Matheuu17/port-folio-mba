@@ -1,12 +1,49 @@
 ---
+import CornerBracket from './CornerBracket.astro';
+
 export interface Props {
-    date: string,
-    title: string,
-    description: string
+  date: string;
+  title: string;
+  description: string;
+  roleTag?: string;
+  index?: number;
 }
-const {date, title, description} = Astro.props
+
+const { date, title, description, roleTag, index = 0 } = Astro.props;
+const isCurrent = index === 0;
 ---
-<div class="absolute w-3 h-3 bg-white rounded-full mt-1.5 -start-1.5 border border-buffer"></div>
-<time class="mb-1 text-sm font-normal leading-none text-gray-400">{date}</time>
-<h3 class="text-lg font-semibold text-yellow-200 mt-2">{title}</h3>
-<p class="mb-4 text-base font-normal text-gray-100 text-pretty mt-2">{description}</p> 
+
+<span
+  aria-hidden="true"
+  class={`absolute -left-[6.5px] top-6 size-3 rounded-full border-2 transition-colors duration-200 ${
+    isCurrent
+      ? 'bg-[#0E7490] border-[#F4F7F9] ring-4 ring-[#0E7490]/20'
+      : 'bg-[#F4F7F9] border-[#0B1120]'
+  }`}
+></span>
+
+<CornerBracket
+  as="article"
+  variant="light"
+  class="bg-white/85 border border-slate-200/90 p-5 sm:p-6 transition-all duration-200 hover:bg-white hover:shadow-sm"
+>
+  <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+    <time class="font-mono text-xs uppercase tracking-widest text-[#0E7490] font-semibold">
+      {date}
+    </time>
+    {roleTag && (
+      <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-[#0E7490]/10 text-[#0E7490] border border-[#0E7490]/25">
+        <span class="size-1.5 rounded-full bg-[#0E7490] animate-pulse" aria-hidden="true"></span>
+        {roleTag}
+      </span>
+    )}
+  </div>
+
+  <h3 class="font-sans text-lg sm:text-xl font-bold text-[#0B1120] leading-snug">
+    {title}
+  </h3>
+
+  <p class="mt-2.5 font-sans text-sm sm:text-base text-slate-600 leading-relaxed text-pretty">
+    {description}
+  </p>
+</CornerBracket>

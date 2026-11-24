@@ -1,5 +1,107 @@
 @import "tailwindcss";
 
 @theme {
-    --font-arcade: "Press Start 2P", system-ui, sans-serif;
+  --font-display: "Oswald", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-canvas: #09090B;
+  --color-surface: #111114;
+  --color-hairline: #27272A;
+  --color-bracket: #3F3F46;
+  --color-ink: #F8FAFC;
+  --color-ink-muted: #94A3B8;
+
+  --color-light-canvas: #F4F7F9;
+  --color-light-surface: #FFFFFF;
+  --color-light-ink: #0B1120;
+  --color-light-muted: #475569;
+
+  --color-accent: #FACC15;
+  --color-accent-light: #0E7490;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
   }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: #09090B;
+    color: #F8FAFC;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background-color: rgba(250, 204, 21, 0.25);
+    color: #F8FAFC;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Subtle star-like dot grid for dark sections */
+.bg-blueprint-dark {
+  background-color: #09090B;
+  background-image: radial-gradient(rgba(248, 250, 252, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Subtle dot grid for light contrast sections */
+.bg-blueprint-light {
+  background-color: #F4F7F9;
+  background-image: radial-gradient(rgba(11, 17, 32, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Pure CSS Corner Brackets utility class (for standalone elements) */
+.corner-brackets {
+  --cb-color: #3F3F46;
+  --cb-size: 11px;
+  --cb-thickness: 1.5px;
+  background-image:
+    linear-gradient(to right, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to bottom, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to left, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to bottom, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to right, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to top, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to left, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness)),
+    linear-gradient(to top, var(--cb-color) var(--cb-thickness), transparent var(--cb-thickness));
+  background-position:
+    top left, top left,
+    top right, top right,
+    bottom left, bottom left,
+    bottom right, bottom right;
+  background-size: var(--cb-size) var(--cb-size);
+  background-repeat: no-repeat;
+}
+
+/* Clean custom scrollbar for project gallery modals */
+.editorial-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.editorial-scroll::-webkit-scrollbar-track {
+  background: #111114;
+}
+
+.editorial-scroll::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border-radius: 9999px;
+}
+
+.editorial-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}

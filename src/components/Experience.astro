@@ -1,37 +1,39 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro"
+import ExperienceItem from './ExperienceItem.astro';
 
 const EXPERIENCE = [
-    {
-        date: 'Actualmente...',
-        title: 'Freelancer',
-        description: 'Desarrollador de Software Independiente: Diseño y desarrollo de soluciones web a medida, APIs backend e interfaces interactivas para clientes y proyectos locales.'
-    },
-    {
-        date: 'Feb 2026 - Abr 2026',
-        title: 'Practicante de Marketing - Corporación USIL',
-        description: 'Análisis de datos de volumen para segmentación, seguimiento estratégico de leads y logística de eventos institucionales.'
-    },
-    {
-        date: 'Ago 2025 - Mar 2026',
-        title: 'Programa de Formacion Profesional PAZI - Junnior Achievement',
-        description: 'Diseño de dashboards en Salesforce, limpieza de bases de datos y desarrollo de una web para control de inventario.'
-    },
-    {
-        date: 'Abr 2023 - Sep 2025',
-        title: 'Coordinador de Gestión e Innovación - M4L Club',
-        description: 'Desarrollo de la plataforma web del club y gestión de logística en eventos académicos.'
-    },
-    
-]
+  {
+    date: 'Actualmente...',
+    title: 'Freelancer',
+    roleTag: 'ACTIVO',
+    description:
+      'Desarrollador de Software Independiente: Diseño y desarrollo de soluciones web a medida, APIs backend e interfaces interactivas para clientes y proyectos locales.',
+  },
+  {
+    date: 'Feb 2026 - Abr 2026',
+    title: 'Practicante de Marketing - Corporación USIL',
+    description:
+      'Análisis de datos de volumen para segmentación, seguimiento estratégico de leads y logística de eventos institucionales.',
+  },
+  {
+    date: 'Ago 2025 - Mar 2026',
+    title: 'Programa de Formación Profesional PAZI - Junior Achievement',
+    description:
+      'Diseño de dashboards en Salesforce, limpieza de bases de datos y desarrollo de una web para control de inventario.',
+  },
+  {
+    date: 'Abr 2023 - Sep 2025',
+    title: 'Coordinador de Gestión e Innovación - M4L Club',
+    description:
+      'Desarrollo de la plataforma web del club y gestión de logística en eventos académicos.',
+  },
+];
 ---
-<ol class="relative border-s border-gray-700 ml-3 my-6">     
-    {
-        EXPERIENCE.map(experience =>(
-            <li class="mb-10 ms-6">
-                <ExperienceItem {...experience}/>
-            </li>
-        ))
-    }             
-</ol>
 
+<ol class="relative border-l border-slate-300 ml-2 sm:ml-3 space-y-8">
+  {EXPERIENCE.map((experience, index) => (
+    <li class="relative pl-7 sm:pl-10">
+      <ExperienceItem {...experience} index={index} />
+    </li>
+  ))}
+</ol>

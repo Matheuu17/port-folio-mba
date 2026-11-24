@@ -1,0 +1,38 @@
+---
+export interface Props {
+  as?: 'div' | 'article' | 'a' | 'section';
+  variant?: 'dark' | 'light';
+  interactive?: boolean;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  as: Tag = 'div',
+  variant = 'dark',
+  interactive = true,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const baseBracketColor =
+  variant === 'light'
+    ? 'border-[#94A3B8]'
+    : 'border-[#3F3F46]';
+
+const hoverBracketColor = interactive
+  ? variant === 'light'
+    ? 'group-hover:border-[#0E7490] group-focus-within:border-[#0E7490]'
+    : 'group-hover:border-[#FACC15] group-focus-within:border-[#FACC15]'
+  : '';
+
+const bracketClasses = `pointer-events-none absolute size-[11px] transition-colors duration-200 ${baseBracketColor} ${hoverBracketColor}`;
+---
+
+<Tag class={`group relative ${className}`} {...rest}>
+  <span aria-hidden="true" class={`${bracketClasses} top-0 left-0 border-t-[1.5px] border-l-[1.5px]`}></span>
+  <span aria-hidden="true" class={`${bracketClasses} top-0 right-0 border-t-[1.5px] border-r-[1.5px]`}></span>
+  <span aria-hidden="true" class={`${bracketClasses} bottom-0 left-0 border-b-[1.5px] border-l-[1.5px]`}></span>
+  <span aria-hidden="true" class={`${bracketClasses} bottom-0 right-0 border-b-[1.5px] border-r-[1.5px]`}></span>
+  <slot />
+</Tag>

@@ -1,112 +1,87 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Badge from '../components/Badge.astro';
-import Section from '../components/Section.astro';
-import SocialPill from '../components/SocialPill.astro';
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/Section.astro";
 
-// Componentes modulares
-import Experience from '../components/Experience.astro';
-import Projects from '../components/Projects.astro';
-import Intereses from '../components/Intereses.astro';
-import Contacto from '../components/Contacto.astro';
-
-// Iconos semánticos
-import LinkedInIcon from '../icons/LinkedIn.astro';
-import GitHubIcon from '../icons/GitHub.astro';
-import MailIcon from '../icons/Mail.astro';
-import CVIcon from '../icons/CV.astro';
-import SuitCase from '../icons/SuitCase.astro';
-import CodeIcon from '../icons/Code.astro';
+// Secciones modulares
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Experience from "../components/Experience.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Intereses from "../components/Intereses.astro";
+import Contacto from "../components/Contacto.astro";
 ---
 
-<Layout 
+<Layout
   title="Matías Alcalá — Software & Backend Engineer Jr"
   description="Estudiante de Ingeniería de Software enfocado en desarrollo backend con Python (Django), APIs y modelado de datos."
 >
-  <main class="px-4 max-w-5xl mx-auto">
-    
-    <!-- SECCIÓN 1: Presentación Personal -->
-    <Section class="py-24 sm:py-32">
-      <div class="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 text-center lg:text-left">
-        
-        <div class="flex-1"> 
-          <h1 class="text-white text-3xl sm:text-4xl lg:text-5xl font-bold flex flex-wrap items-center justify-center lg:justify-start gap-x-4 pb-4">
-            Hola, soy Matías.
-            <a 
-              class="text-xs sm:text-sm mt-1 inline-block" 
-              href="https://www.linkedin.com/in/matias-alcal%C3%A1/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Badge>Disponible para trabajar</Badge>
-            </a>
-          </h1> 
-          
-          <h2 class="text-base sm:text-lg lg:text-xl text-neutral-300 max-w-[650px] leading-relaxed mb-6">
-            Estudiante de Ingeniería de Software en Lima, Perú 🇵🇪. 
-            Especializado en backend con <span class="text-yellow-200 font-semibold">Python (Django)</span>, 
-            arquitectura de software y bases de datos.
-          </h2>
+  <!-- SECCIÓN 1: HERO (Oscuro) -->
+  <Hero />
 
-          <nav class="flex gap-3 flex-wrap justify-center lg:justify-start">
-            <SocialPill href="https://www.linkedin.com/in/matias-alcal%C3%A1/">
-              <LinkedInIcon class="size-4 md:size-5"/> LinkedIn
-            </SocialPill>
-            <SocialPill href="https://github.com/Matheuu17">
-              <GitHubIcon class="size-4 md:size-5"/> GitHub
-            </SocialPill>
-            <SocialPill href="/CV - Matías Alcalá (Formato Harvard).pdf" target="_blank" rel="noopener noreferrer">
-              <CVIcon class="size-4 md:size-5"/> CV
-            </SocialPill>
-            <SocialPill href="mailto:matiasalcala123456@gmail.com">
-              <MailIcon class="size-4 md:size-5"/> Email
-            </SocialPill>
-          </nav>
-        </div>  
+  <!-- SECCIÓN 2: SOBRE MÍ (Contraste Claro #F4F7F9) -->
+  <About />
 
-        <img  
-          class="rounded-full w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 object-cover shadow-2xl border-2 border-white/10 shrink-0" 
-          src="/mat.JPG" 
-          alt="Foto de Matías Alcalá"
-          loading="eager"
-        />
-      </div>  
-    </Section>
-
-    <!-- SECCIÓN 2: Experiencia -->
-    <Section id="Experiencia" class="py-12 sm:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-x-3 text-white">
-        <SuitCase class="size-6 text-yellow-200"/>
+  <!-- SECCIÓN 2: EXPERIENCIA (Contraste Claro #F4F7F9)
+  <Section id="Experiencia" theme="light" class="py-20 sm:py-28">
+    <div class="mb-12">
+      <span class="block font-mono text-xs uppercase tracking-widest text-[#0E7490] font-semibold mb-2">
+        01 // TRAYECTORIA
+      </span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold uppercase tracking-tight text-[#0B1120]">
         Experiencia
       </h2>
-      <Experience />
-    </Section> 
+    </div>
+    <Experience />
+  </Section>-->
 
-    <!-- SECCIÓN 3: Proyectos -->
-    <Section id="Proyectos" class="py-12 sm:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-x-3 text-white">
-        <CodeIcon class="size-6 text-yellow-200"/>
+  <!-- SECCIÓN 3: SKILLS (Oscuro) -->
+  <Section id="Skills" theme="dark" class="py-20 sm:py-28">
+    <div class="mb-12">
+      <h2 class="font-display text-6xl sm:text-7xl lg:text-[5.5rem] font-bold uppercase tracking-tight leading-[0.9] text-[#F8FAFC]">
+        Skills &amp; Stack
+      </h2>
+    </div>
+    <Skills />
+  </Section>
+
+  <!-- SECCIÓN 4: PROYECTOS (Oscuro) -->
+  <Section
+    id="Proyectos"
+    theme="dark"
+    class="py-20 sm:py-28 border-t border-[#27272A]/70"
+  >
+    <div class="mb-12">
+      <h2 class="font-display text-6xl sm:text-7xl lg:text-[5.5rem] font-bold uppercase tracking-tight leading-[0.9] text-[#F8FAFC]">
         Proyectos
       </h2>
-      <Projects />
-    </Section> 
+    </div>
+    <Projects />
+  </Section>
 
-    <!-- SECCIÓN 4: Intereses (La cabecera estilizada ya reside dentro del componente) -->
-    <Section id="Intereses" class="py-8 sm:py-12">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-x-3 text-white">
-        <CodeIcon class="size-6 text-yellow-200"/>
+  <!-- SECCIÓN 5: INTERESES / BEYOND CODE (Oscuro) 
+  <Section
+    id="Intereses"
+    theme="dark"
+    class="py-20 sm:py-24 border-t border-[#27272A]/70"
+  >
+    <div class="mb-10">
+      <span class="block font-mono text-xs uppercase tracking-widest text-[#FACC15] mb-2">
+        04 // BEYOND CODE
+      </span>
+      <h2 class="font-display text-6xl sm:text-7xl lg:text-[5.5rem] font-bold uppercase tracking-tight leading-[0.9] text-[#F8FAFC]">
         Intereses
       </h2>
-      <Intereses />
-    </Section> 
+    </div>
+    <Intereses />
+  </Section>-->
 
-    <!-- SECCIÓN 5: Contacto (La cabecera estilizada ya reside dentro del componente) -->
-    <Section id="Contacto" class="py-8 sm:py-12">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-x-3 text-white">
-        <CodeIcon class="size-6 text-yellow-200"/>
-        Contacto
-      </h2>
-      <Contacto />
-    </Section>
-  </main>
+  <!-- SECCIÓN 6: CONTACTO (Oscuro #09090B) -->
+  <Section
+    id="Contacto"
+    theme="dark"
+    class="py-20 sm:py-28 border-t border-[#27272A]/70"
+  >
+    <Contacto />
+  </Section>
 </Layout>

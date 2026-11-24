@@ -1,17 +1,25 @@
 ---
+import CornerBracket from './CornerBracket.astro';
+
 export interface Props {
   name: string;
+  code?: string;
   icon: (_props: Record<string, any>) => any;
 }
 
-const { name, icon: IconComponent } = Astro.props;
+const { name, code, icon: IconComponent } = Astro.props;
 ---
 
-<div class="group flex flex-col items-center justify-center gap-y-2.5 py-5 px-2 rounded-xl bg-[#0a0a0c] border border-white/10 hover:border-[#e12a88]/60 hover:bg-[#121217] transition-all duration-300 shadow-lg hover:shadow-[#e12a88]/10 hover:-translate-y-1">
-  <div class="transition-transform duration-300 group-hover:scale-110">
-    <IconComponent class="size-6 text-white" />
+<CornerBracket class="bg-[#111114] border border-[#27272A]/80 p-5 flex flex-col items-center justify-center gap-3 text-center transition-all duration-200 hover:bg-[#15151A] hover:-translate-y-0.5">
+  {code && (
+    <span class="absolute top-2.5 right-3 font-mono text-[10px] text-zinc-600 group-hover:text-[#FACC15] transition-colors">
+      {code}
+    </span>
+  )}
+  <div class="size-11 rounded-sm bg-[#09090B] border border-[#27272A] flex items-center justify-center text-zinc-300 group-hover:text-[#FACC15] group-hover:border-[#FACC15]/40 transition-all duration-200">
+    <IconComponent class="size-5" />
   </div>
-  <span class="text-[10px] md:text-[11px] tracking-tight text-neutral-300 group-hover:text-white transition-colors text-center w-full block whitespace-nowrap overflow-hidden text-ellipsis">
+  <span class="font-mono text-xs uppercase tracking-wider text-zinc-300 group-hover:text-[#F8FAFC] transition-colors">
     {name}
   </span>
-</div>
+</CornerBracket>

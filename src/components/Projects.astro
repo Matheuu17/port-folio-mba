@@ -4,80 +4,223 @@ import Django from "../icons/Django.astro";
 import HTML from "../icons/HTML.astro";
 import CSS from "../icons/CSS.astro";
 import SQLite from "../icons/SQLite.astro";
+import Tailwind from "../icons/Tailwind.astro";
 
 const TAGS = {
-  Django: { name: "Django", class: "bg-[#092e20] text-[#44b78b]", icon: Django },
-  HTML: { name: "HTML", class: "bg-[#e34f26] text-white", icon: HTML },
-  CSS: { name: "CSS", class: "bg-[#1572b6] text-white", icon: CSS },
-  SQLite: { name: "SQLite", class: "bg-[#003b57] text-white", icon: SQLite },
+  NextJS: { name: "Next.js", iconKey: "nextjs" },
+  Supabase: { name: "Supabase", iconKey: "supabase" },
+  GoogleSheets: { name: "Google Sheets API", iconKey: "sheets" },
+  Tailwind: { name: "Tailwind CSS", icon: Tailwind },
+  Leaflet: { name: "Leaflet.js", iconKey: "leaflet" },
+  JavaScript: { name: "JavaScript", iconKey: "js" },
+  Python: { name: "Python", iconKey: "python" },
+  NOAA: { name: "Datos NOAA / ENFEN", iconKey: "noaa" },
+  Django: { name: "Django", icon: Django },
+  HTML: { name: "HTML5", icon: HTML },
+  CSS: { name: "CSS3", icon: CSS },
+  SQLite: { name: "SQLite", icon: SQLite },
 };
 
 const PROJECTS = [
   {
+    id: "elnino-geoportal-project",
+    code: "PRJ-02 // GEODATA & MONITOREO",
+    urlLabel: "elnino.geoportal.pe / monitor-climatico",
+    statusBadge: "EN DESARROLLO // MVP",
+    title: "El Niño Geoportal — Monitoreo Climático",
+    description:
+      "Geoportal interactivo para visualizar niveles de riesgo climático a nivel departamental y provincial en el Perú (Piura, Tumbes, Lambayeque, Arequipa, Lima y Puno) integrando series históricas de datos NOAA y ENFEN.",
+    highlights: [
+      "Visualización geoespacial interactiva con capas dinámicas por departamento y provincia.",
+      "Procesamiento y cruce de datasets climáticos históricos (2011–2026) de NOAA y ENFEN.",
+      "Indicadores de alerta temprana y análisis comparativo de anomalías térmicas y precipitaciones.",
+    ],
+    visualType: "radar" as const,
+    hasGallery: false,
+    gallery: [],
+    tags: [TAGS.Leaflet, TAGS.JavaScript, TAGS.Python, TAGS.NOAA],
+  },
+  {
+    id: "capellania-ops-project",
+    code: "PRJ-01 // LOGÍSTICA & REAL-TIME",
+    urlLabel: "capellania-ops.app / panel-campo",
+    title: "Capellanía Ops — Gestión Logística y Asistencia",
+    description:
+      "Plataforma web desarrollada para digitalizar la logística de eventos, control de inventarios y registro automatizado de asistencia de participantes, reemplazando hojas de cálculo manuales por sincronización en tiempo real.",
+    highlights: [
+      "Automatización del registro de asistencia y validación de participantes en tiempo real.",
+      "Sincronización directa con Google Sheets y trazabilidad centralizada de recursos.",
+      "Panel operativo diseñado con enfoque mobile-first para uso rápido en campo durante eventos.",
+    ],
+    visualType: "carousel" as const,
+    coverImage: "/cape1.webp",
+    hasGallery: true,
+    gallery: [
+      {
+        src: "/projects/cape1.webp",
+        title: "Panel Principal de Operaciones y Eventos",
+      },
+      {
+        src: "/projects/cape2.webp",
+        title: "Registro y Validación de Asistencia en Tiempo Real. ",
+      },
+      {
+        src: "/projects/cape3.webp",
+        title: "Control de Asistencia y Trazabilidad de Recursos",
+      },
+      {
+        src: "/projects/cape4.webp",
+        title: "Perfil del usuario",
+      },
+    ],
+    tags: [TAGS.NextJS, TAGS.Supabase, TAGS.GoogleSheets, TAGS.Tailwind],
+  },
+
+  {
     id: "altoque-project",
+    code: "PRJ-03 // BACKEND & GESTIÓN",
+    urlLabel: "altoque.app / django-mvc",
     title: "AlToque — Gestión Web Gastronómica",
-    description: "Aplicación web de gestión gastronómica y pedidos. Evolucionó de un prototipo en PHP nativo a una arquitectura modular y robusta con Django (Python) y SQLite.",
+    description:
+      "Aplicación web de gestión gastronómica y pedidos. Evolucionó de un prototipo en PHP nativo a una arquitectura modular y robusta con Django (Python) y SQLite.",
     highlights: [
       "Arquitectura MVC con control transaccional de ventas y pedidos por mesa en tiempo real.",
       "Optimización de consultas para métricas y soporte de operaciones diarias.",
-      "Autenticación y roles de usuario para personal de salón y cocina."
+      "Autenticación y roles de usuario para personal de salón y cocina.",
     ],
     github: "https://github.com/Matheuu17/TF-IS3/tree/main",
-    coverImage: "../projects/cocinapp.webp",
+    visualType: "image" as const,
+    coverImage: "/projects/cocinapp.webp",
     hasGallery: false,
     gallery: [],
     tags: [TAGS.Django, TAGS.HTML, TAGS.CSS, TAGS.SQLite],
   },
   {
     id: "almi-project",
+    code: "PRJ-04 // CRM & KANBAN",
+    urlLabel: "almi.crm / kanban-operativo",
     title: "ALMI — CRM & Kanban Operativo",
-    description: "Sistema integral de gestión de relaciones con contactos (CRM) y tablero Kanban de actividades diseñado para centralizar empresas, miembros y trazabilidad operativa.",
+    description:
+      "Sistema integral de gestión de relaciones con contactos (CRM) y tablero Kanban de actividades diseñado para centralizar empresas, miembros y trazabilidad operativa.",
     highlights: [
       "Tablero Kanban interactivo desarrollado con JavaScript para seguimiento visual de estados en tiempo real.",
       "Arquitectura Django/Python con modelado relacional y persistencia de auditoría.",
-      "Gestión granular de permisos, sesiones seguras y control de accesos corporativos."
+      "Gestión granular de permisos, sesiones seguras y control de accesos corporativos.",
     ],
     github: "https://github.com/Matheuu17/ALMI",
-    coverImage: "../projects/ALMI.webp",
+    visualType: "image" as const,
+    coverImage: "/projects/ALMI.webp",
     hasGallery: true,
     gallery: [
-      { src: "../projects/ALMI1.webp", title: "Panel de Gestión de Usuarios y Roles" },
-      { src: "../projects/ALMI2.webp", title: "Tablero Kanban de Actividades" },
-      { src: "../projects/ALMI3.webp", title: "Directorio de Empresas y Contactos" },
-      { src: "../projects/ALMI4.webp", title: "Historial y Trazabilidad de Reuniones" },
+      {
+        src: "/projects/ALMI1.webp",
+        title: "Panel de Gestión de Usuarios y Roles",
+      },
+      { src: "/projects/ALMI2.webp", title: "Tablero Kanban de Actividades" },
+      {
+        src: "/projects/ALMI3.webp",
+        title: "Directorio de Empresas y Contactos",
+      },
+      {
+        src: "/projects/ALMI4.webp",
+        title: "Historial y Trazabilidad de Reuniones",
+      },
     ],
-    tags: [TAGS.CSS, TAGS.Django, TAGS.HTML, TAGS.SQLite],
+    tags: [TAGS.Django, TAGS.HTML, TAGS.CSS, TAGS.SQLite],
   },
 ];
 ---
 
-<div class="flex flex-col gap-y-12">
+<div class="flex flex-col gap-y-10">
   {PROJECTS.map((project) => (
     <ProjectItem {...project} />
   ))}
 </div>
 
 <script>
-  document.querySelectorAll('[data-open-modal]').forEach((trigger) => {
-    trigger.addEventListener('click', () => {
-      const modalId = trigger.getAttribute('data-open-modal');
+  // Modales de galería y ficha técnica
+  document.querySelectorAll("[data-open-modal]").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const modalId = trigger.getAttribute("data-open-modal");
       if (modalId) {
-        const modal = document.getElementById(modalId) as HTMLDialogElement;
+        const modal = document.getElementById(
+          modalId,
+        ) as HTMLDialogElement | null;
         if (modal) modal.showModal();
       }
     });
   });
 
-  document.querySelectorAll('dialog .close-modal').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      const modal = (e.target as HTMLElement).closest('dialog');
+  document.querySelectorAll("dialog .close-modal").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const modal = (e.target as HTMLElement).closest("dialog");
       if (modal) modal.close();
     });
   });
 
-  document.querySelectorAll('dialog').forEach((dialog) => {
-    dialog.addEventListener('click', (e) => {
+  document.querySelectorAll("dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (e) => {
       if (e.target === dialog) dialog.close();
     });
   });
+
+  // Selector interactivo de vistas (carrusel en mockup de navegador)
+  document
+    .querySelectorAll<HTMLElement>("[data-carousel]")
+    .forEach((carousel) => {
+      const slides = Array.from(
+        carousel.querySelectorAll<HTMLElement>("[data-carousel-slide]"),
+      );
+      const dots = Array.from(
+        carousel.querySelectorAll<HTMLButtonElement>("[data-carousel-dot]"),
+      );
+      const prevBtn = carousel.querySelector<HTMLButtonElement>(
+        "[data-carousel-prev]",
+      );
+      const nextBtn = carousel.querySelector<HTMLButtonElement>(
+        "[data-carousel-next]",
+      );
+      const captionEl = carousel.querySelector<HTMLElement>(
+        "[data-carousel-caption]",
+      );
+      let activeIndex = 0;
+
+      function updateSlide(nextIdx: number) {
+        if (slides.length === 0) return;
+        activeIndex = (nextIdx + slides.length) % slides.length;
+
+        slides.forEach((slide, idx) => {
+          const isCurrent = idx === activeIndex;
+          slide.classList.toggle("opacity-100", isCurrent);
+          slide.classList.toggle("z-10", isCurrent);
+          slide.classList.toggle("opacity-0", !isCurrent);
+          slide.classList.toggle("pointer-events-none", !isCurrent);
+        });
+
+        dots.forEach((dot, idx) => {
+          const isCurrent = idx === activeIndex;
+          dot.classList.toggle("bg-[#FACC15]", isCurrent);
+          dot.classList.toggle("text-[#09090B]", isCurrent);
+          dot.classList.toggle("border-[#FACC15]", isCurrent);
+          dot.classList.toggle("font-semibold", isCurrent);
+          dot.classList.toggle("bg-zinc-900", !isCurrent);
+          dot.classList.toggle("text-zinc-400", !isCurrent);
+          dot.classList.toggle("border-[#27272A]", !isCurrent);
+          dot.setAttribute("aria-pressed", String(isCurrent));
+        });
+
+        const activeTitle =
+          slides[activeIndex]?.getAttribute("data-slide-title");
+        if (captionEl && activeTitle) {
+          captionEl.textContent = activeTitle;
+        }
+      }
+
+      dots.forEach((dot, idx) => {
+        dot.addEventListener("click", () => updateSlide(idx));
+      });
+
+      prevBtn?.addEventListener("click", () => updateSlide(activeIndex - 1));
+      nextBtn?.addEventListener("click", () => updateSlide(activeIndex + 1));
+    });
 </script>
